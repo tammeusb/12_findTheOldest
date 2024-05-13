@@ -1,17 +1,23 @@
-/*const findTheOldest = function(people) {
+const getAge = function(birth, death) {
+    if (!death) {
+        death = new Date().getFullYear();
+    }
+    return death - birth
+}
+
+const findTheOldest = function(people) {
     const sortByAge = people.sort((a,b) => {
-        const currentDate = new Date().getFullYear();
 
-        if ('yearOfDeath' in a === false) a.yearOfDeath = currentDate;
-        if ('yearOfDeath' in b === false) b.yearOfDeath = currentDate;
+        const firstAge = getAge(a.yearOfBirth, a.yearOfDeath);
+        const secondAge = getAge(b.yearOfBirth, b.yearOfDeath);
 
-        if (a.yearOfDeath - a.yearOfBirth > b.yearOfDeath - b.yearOfBirth) return 1
-        if (a.yearOfDeath - a.yearOfBirth < b.yearOfDeath - b.yearOfBirth) return -1
+        if (firstAge > secondAge) return 1
+        if (firstAge < secondAge) return -1
     })
-    return sortedByAge[sortedByAge.length - 1]
-};*/
+    return sortByAge[sortByAge.length - 1]
+};
 
-const getAge = function (birth, death) {
+/*const getAge = function (birth, death) {
     if (!death) {
       death = new Date().getFullYear();
     }
@@ -28,26 +34,11 @@ const getAge = function (birth, death) {
       return oldestAge < currentAge ? currentPerson : oldest;
     });
   };
-
+*/
 
 //iterate through object, 
 
-const peopleTest = [
-    {
-      name: "Carly",
-      yearOfBirth: 2018,
-    },
-    {
-      name: "Ray",
-      yearOfBirth: 1962,
-      yearOfDeath: 2011,
-    },
-    {
-      name: "Jane",
-      yearOfBirth: 1912,
-      yearOfDeath: 1941,
-    },
-  ]
+
 
 
 
